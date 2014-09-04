@@ -110,7 +110,6 @@ mp.Track("12345", "Welcome Email Sent", &P{
  })
 */
 func (mp *Mixpanel) Track(distinct_id, event string, prop *P) error {
-	import_endpoint += "?api_key=" + mp.Token
 	return mp.sendEvent(distinct_id, event, prop, "events")
 }
 
@@ -119,6 +118,7 @@ Imports events that occurred more than 5 days in the past. Takes the
 same arguments as Track and behaves in the same way.
 */
 func (mp *Mixpanel) Import(distinct_id, event string, prop *P) error {
+	import_endpoint += "?api_key=" + mp.Token
 	return mp.sendEvent(distinct_id, event, prop, "import")
 }
 
